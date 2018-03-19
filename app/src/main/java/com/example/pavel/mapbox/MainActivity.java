@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
             String permissions[] = {Manifest.permission.ACCESS_FINE_LOCATION};
             requestPermissions(permissions,LOCATION_PERMISSION_CODE);
         }
+
+        Wifi wifi = new Wifi(getApplicationContext());
+
         markers = new GeoMap();
         markers = getJsonFromFile();
 
@@ -42,11 +45,7 @@ public class MainActivity extends AppCompatActivity {
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
-
                 markers.placeMarkers(mapboxMap, getApplicationContext());
-
-
-
             }
         });
 
